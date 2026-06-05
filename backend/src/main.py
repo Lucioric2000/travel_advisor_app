@@ -9,6 +9,7 @@
 
 import os
 import httpx
+import uvicorn
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi import Request
@@ -151,5 +152,8 @@ async def get_travel_advice(request: PromptRequest):
 
 # --- How to Run (for reference) ---
 # In your terminal, navigate to the directory containing this file and run:
-# uvicorn main:app --reload
-# The server will be available at http://127.0.0.1:8000
+# uvicorn main:app --reload --port 5000
+# The server will be available at http://127.0.0.1:5000
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=5000)
