@@ -72,23 +72,23 @@ class PromptRequest(BaseModel):
     prompt: str
 
 # Montar archivos estáticos
-#app.mount("/dist", StaticFiles(directory="frontend/dist"), name="dist")
-app.mount("/static", StaticFiles(directory="frontend/build/static"), name="static")
-#app.mount("/assets", StaticFiles(directory="frontend/build/assets"), name="assets")
+#app.mount("/dist", StaticFiles(directory="./../frontend/dist"), name="dist")
+app.mount("/static", StaticFiles(directory="../../frontend/build/static"), name="static")
+#app.mount("/assets", StaticFiles(directory="./../frontend/build/assets"), name="assets")
 
 # Servir otros archivos estáticos de la build
 @app.get("/manifest.json")
 async def serve_manifest():
-    return FileResponse("frontend/build/manifest.json")
+    return FileResponse("../../frontend/build/manifest.json")
 
 @app.get("/favicon.ico")
 async def serve_favicon():
-    return FileResponse("frontend/build/favicon.ico")
+    return FileResponse("../../frontend/build/favicon.ico")
 
 # Ruta para servir la aplicación React
 @app.get("/{full_path:path}")
 async def serve_react(full_path: str):
-    return FileResponse("frontend/build/index.html")
+    return FileResponse("../../frontend/build/index.html")
 
 # --- Web server endpoints ---
 #@app.get("/")
